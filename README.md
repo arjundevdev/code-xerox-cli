@@ -17,11 +17,11 @@ B) How to Install:
 
 1. Need to upload all the script file on the server via FTP or any other file uploader.
 
-   a) issue.php
+   a) create_issue.php
 
-   b) inc/Auth.php
+   b) inc/OAuthApi.php
 
-   c) inc/AuthException.php
+   c) inc/OAuthApiException.php
 
 2. Open command line and connect to server via host username & host password
 
