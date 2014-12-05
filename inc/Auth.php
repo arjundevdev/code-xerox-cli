@@ -167,8 +167,9 @@ class Auth {
 		 
 		 curl_setopt($curl, CURLOPT_HEADER, false);	
 		 $bitTitle = $parameters['title'];	
-		 //$data = http_build_query($parameters, '', ',');
-		 $data = "title=".$bitTitle;
+		 $bitDesc = $parameters['body'];
+		 ///$data = http_build_query($parameters, '', ',');
+		 $data = "title=".$bitTitle."&content=".$bitDesc;
 		
 		}
 		 else if($this->options['api_type'] == 'github') {
