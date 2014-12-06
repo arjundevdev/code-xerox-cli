@@ -166,18 +166,14 @@ class Auth {
 		if($this->options['api_type'] == 'bitbucket') {
 		 
 		 curl_setopt($curl, CURLOPT_HEADER, false);	
-		 $bitTitle = $parameters['title'];	
-		 $bitDesc = $parameters['body'];
-		 ///$data = http_build_query($parameters, '', ',');
-		 $data = "title=".$bitTitle."&content=".$bitDesc;
+		 $data = utf8_encode( http_build_query( $parameters, '', '&' ) );
 		
 		}
 		 else if($this->options['api_type'] == 'github') {
 	
 		curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
 		curl_setopt($curl, CURLOPT_CONNECTTIMEOUT,$this->options['timeout']);
-		$data = $parameters;
-		$data = json_encode($data); 
+		$data = json_encode($parameters);
 		 
 		}
          curl_setopt($curl, CURLOPT_RETURNTRANSFER,1); 
@@ -219,10 +215,20 @@ class Auth {
 	
         // Set Api's url based on passed api type
         if($this->options['api_type'] == 'github') {
-            $opt_url = $this->options['github_url'];
+            $opt_url = $this->options['github_url
+            
+            if(isset($parameters['desc'])) {
+                $parameters['body'] = $parameters['desc'];
+                unset($parameters['desc']);
+            }
           
         } else if($this->options['api_type'] == 'bitbucket') {
             $opt_url = $this->options['bitbucket_url'];
+            
+            if(isset($parameters['desc'])) {
+                $parameters['content'] = $parameters['desc'];
+                unset($parameters['desc']);
+            }
             
         } else {
             $this->error_handler( 'Method Not Allowed', (int)$headers['http_code'] );
