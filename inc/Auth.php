@@ -71,7 +71,7 @@ class Auth {
 
     /**
      * configurationApi function used of configure the API path , which one api will be trigger github/bitbucket
-	   @param $option contain api credetials (Username, Password, Api Url)
+     *@param $option contain api credetials (Username, Password, Api Url)
      */
     public function configurationApi(array $options) {
 	$this->options = $options + $this->options;
