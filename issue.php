@@ -7,7 +7,7 @@
  */
 
 //disable error messages
-//ini_set('display_errors', 0);
+ini_set('display_errors', 0);
 
 //include Auth class file for making request
 require_once('inc/Auth.php');
