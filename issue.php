@@ -84,7 +84,7 @@ class addIssue {
 	 public function sendRequest() {
 			if($this->inputValidation()) {
 				//Send request to create repository issue on github|bitbucket
-				$response = $this->auth->post(array('title' => $this->title, 'body' => $this->desc));
+				$response = $this->auth->post(array('title' => $this->title, 'desc' => $this->desc));
 
 				//show message based on return response from Api's
 				if(isset($response->title)) {
